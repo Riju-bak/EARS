@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="article-entry">
+        <h2>{{ jobapplication.title }}</h2>
+        <p>by {{ jobapplication.author }} | {{ jobapplication.date }}</p>
+        <p>{{ jobapplication.body }}</p>
+        <p><a href={% url 'jobapplication_edit' jobapplication.pk %}>Edit</a> | <a
+                href={% url 'jobapplication_delete' jobapplication.pk %}>Delete</a></p>
+
+        <br>
+        <hr>
+        <h4>Comments</h4>
+        <br>
+
+        <h4>Add a comment</h4>
+        <form action="" method="post">{% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-success" type="submit">Save</button>
+        </form>
+        <br>
+        {% for comment in jobapplication.comment_set.all %}
+            <p>
+                <span class="fw-bold">
+                    {{ comment.author }} &middot;
+                </span>
+                {{ comment }}
+            </p>
+        {% endfor %}
+        </hr>
+        <br>
+        <br><br>
+        <p>Back to <a href={% url 'jobapplication_list' %}>All Job Applications</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Job Applications {% endblock title %}
+
+{% block content %}
+    {% for jobapplication in jobapplication_list %}
+        <div class="card">
+            <div class="card-header">
+                <span class="font-weight-bold">
+                    <a href="{% url 'jobapplication_detail' jobapplication.pk %}">
+                        {{ jobapplication.title }}
+                    </a>
+                </span> &middot;
+                <span class="text-muted"> by {{ jobapplication.author }} | {{ jobapplication.date }}</span>
+            </div>
+            <div class="card-body">
+                {{ jobapplication.body }}
+            </div>
+            <div class="card-footer text-center text-muted">
+                <a href={% url 'jobapplication_edit' jobapplication.pk %}>Edit</a> | <a href={% url 'jobapplication_delete' jobapplication.pk %}>Delete</a>
+            </div>
+        </div>
+        <br/>
+    {% endfor %}
+{% endblock %}
+

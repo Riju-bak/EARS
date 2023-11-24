@@ -1,0 +1,5 @@
+from .list_all_job_applications import JobApplicationListView
+from .create_job_application import JobApplicationCreateView
+from .edit_job_application import JobApplicationUpdateView
+from .detail_job_application import JobApplicationDetailView
+from .delete_job_application import JobApplicationDeleteView

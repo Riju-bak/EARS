@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>Hi {{ user.username }}, you're a {{ user.type }}</p>
+        <p>You can </p>
+        <p><a href="{% url 'jobapplication_list' %}">View All Applications</a></p>
+        <p><a href="{% url 'jobapplication_list' %}">Create a new application</a></p>
+        {% if user.type is 'applicant' %}
+            <p>OR</p>
+            <p><a href="{% url 'jobapplication_create' %}">Create a new application</a></p>
+        {% endif %}
+        <br>
+        <a class="link-danger" href={% url "logout" %}>Log Out</a>
+    {% else %}
+        <p>You aren't logged in</p>
+        <a href="{% url 'login' %}">Log In</a> |
+        <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+{% endblock content %}
