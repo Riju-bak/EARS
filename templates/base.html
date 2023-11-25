@@ -33,8 +33,8 @@
                                 {{ user.username }}
                             </a>
                             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                                <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
-                                </li>
+                                <li><a class="dropdown-item" href="{% url 'editprofile' user.pk %}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
                             </ul>
                         </div>
                     {% else %}

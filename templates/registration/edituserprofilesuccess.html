@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+    User profile successfully edited
+{% endblock title %}
+
+{% block content %}
+    <h1>User Profile Edit Success</h1>
+    <br>
+    <p>Your user information has been successfully edited</p>
+    <p>You must now log back in from the <a href="{% url 'login' %}">Log in page</a></p>
+{% endblock content %}

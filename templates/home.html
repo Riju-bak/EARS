@@ -8,10 +8,11 @@
     {% if user.is_authenticated %}
         <p>Hi {{ user.username }}, you're a {{ user.type }}</p>
         <p>You can </p>
-        <p><a href="{% url 'jobapplication_list' %}">View All Applications</a></p>
-        <p><a href="{% url 'jobapplication_list' %}">Create a new application</a></p>
-        {% if user.type is 'applicant' %}
-            <p>OR</p>
+        {% if user.type == 'faculty' %}
+            <p><a href="{% url 'jobapplication_list' %}">View all applications</a></p>
+        {% endif %}
+        {% if user.type == 'applicant' %}
+            <p><a href="{% url 'jobapplication_list' %}">View your applications</a></p>
             <p><a href="{% url 'jobapplication_create' %}">Create a new application</a></p>
         {% endif %}
         <br>
