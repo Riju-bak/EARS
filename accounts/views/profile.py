@@ -11,14 +11,14 @@ from ..models import CustomUser
 
 # class EditUserProfileView(UpdateView):
 #     form_class = CustomUserEditForm
-#     template_name = "registration/edituserprofile.html"
+#     template_name = "registration/profile.html"
 #     success_url = reverse_lazy("home")
 
-class EditUserProfileView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+class UserProfileView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     model = CustomUser
     form_class = CustomUserEditForm
     success_message = "Profile updated successfully"
-    template_name = "registration/edituserprofile.html"
+    template_name = "registration/profile.html"
     success_url = reverse_lazy("editprofilesuccess")
 
     def test_func(self):
@@ -31,7 +31,6 @@ class EditUserProfileView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessag
             self.object.set_password(password)
             self.object.save()
 
-            # Logout the user
-            logout(self.request)
-
+        # Logout the user
+        logout(self.request)
         return super().form_valid(form)

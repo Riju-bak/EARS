@@ -19,12 +19,13 @@
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center
           justify-content-lg-start">
-                <a class="navbar-brand" href="{% url 'home' %}">Employment Application Review System &middot;&middot;|&middot;&middot; </a>
+                <a class="navbar-brand link-secondary fw-bold" href="{% url 'home' %}">Employment Application Review System &middot;&middot;|&middot;&middot; </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center
             mb-md-0">
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'jobapplication_create' %}" class="nav-link px-2 icon-link-hover">+ New</a>
-                        </li>
+                        {% if  user.type == 'applicant'%}
+                        <li><a href="{% url 'jobapplication_create' %}" class="nav-link px-2 icon-link-hover">+ New</a></li>
+                        {% endif %}
                         </ul>
                         <div class="dropdown text-end">
                             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"

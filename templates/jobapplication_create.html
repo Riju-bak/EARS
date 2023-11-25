@@ -8,5 +8,5 @@
         <button class="btn btn-success ml-2" type="submit">Save</button>
     </form>
     <br>
-    <p>Back to <a href={% url 'jobapplication_list' %}>All Job Applications</a></p>
+    <p>Back to <a href="{% url 'jobapplication_list' %}?author={{ user.pk }}">job applications</a></p>
 {% endblock content %}

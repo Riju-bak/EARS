@@ -1,2 +1,2 @@
 from .signup import SignupView
-from .editprofile import EditUserProfileView
+from .profile import UserProfileView

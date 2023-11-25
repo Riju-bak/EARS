@@ -12,7 +12,7 @@
             <p><a href="{% url 'jobapplication_list' %}">View all applications</a></p>
         {% endif %}
         {% if user.type == 'applicant' %}
-            <p><a href="{% url 'jobapplication_list' %}">View your applications</a></p>
+            <p><a href="{% url 'jobapplication_list' %}?author={{ user.pk }}">View your applications</a></p>
             <p><a href="{% url 'jobapplication_create' %}">Create a new application</a></p>
         {% endif %}
         <br>
