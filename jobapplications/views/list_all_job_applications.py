@@ -33,10 +33,3 @@ class JobApplicationListView(LoginRequiredMixin, ListView):
                 return redirect(f'{current_url}?author={request.user.pk}')
 
         return super().dispatch(request, *args, **kwargs)
-
-    # def dispatch(self, request, *args, **kwargs):
-    #     if self.request.user.type == 'applicant':
-    #         # Redirect to the job applications created by the applicant
-    #         return redirect(f'/applications?author={self.request.user.pk}')
-    #
-    #     return super().dispatch(request, *args, **kwargs)
