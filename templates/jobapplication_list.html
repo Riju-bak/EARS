@@ -16,9 +16,12 @@
             <div class="card-body">
                 {{ jobapplication.body }}
             </div>
-            <div class="card-footer text-center text-muted">
-                <a href={% url 'jobapplication_edit' jobapplication.pk %}>Edit</a> | <a href={% url 'jobapplication_delete' jobapplication.pk %}>Delete</a>
-            </div>
+            {% if user.type == 'applicant' %}
+                <div class="card-footer text-center text-muted">
+                    <a href={% url 'jobapplication_edit' jobapplication.pk %}>Edit</a> | <a
+                        href={% url 'jobapplication_delete' jobapplication.pk %}>Delete</a>
+                </div>
+            {% endif %}
         </div>
         <br/>
     {% endfor %}
