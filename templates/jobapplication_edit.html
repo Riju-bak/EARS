@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
+{% block title %}
+    EARS-edit application
+{% endblock %}
+
 {% block content %}
     <h1>Edit</h1>
+    <p class="fw-bold">Application#{{ jobapplication.job.pk }} for {{ jobapplication.job.title }} by {{ jobapplication.author }}
+        | {{ jobapplication.date }}</p>
     <form action="" method="post">{% csrf_token %}
         {{ form|crispy }}
         <button class="btn btn-info">Update</button>
