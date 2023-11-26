@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} Jobs {% endblock title %}
+
+{% block content %}
+    {% for job in job_list %}
+        <div class="card">
+            <div class="card-header">
+                <span class="font-weight-bold">
+                    <a href="{% url 'jobdetail' job.pk %}">
+                        {{ job.title }}
+                    </a>
+                </span> &middot;
+                <span class="text-muted"> created on {{ job.date }}</span>
+            </div>
+            <div class="card-body">
+                {{ job.description }}
+            </div>
+            {% if user.type == 'faculty' %}
+                <div class="card-footer text-center text-muted">
+                    <a href={% url 'jobedit' job.pk %}>Edit</a> | <a
+                        href={% url 'jobdelete' job.pk %}>Delete</a>
+                </div>
+            {% endif %}
+        </div>
+        <br/>
+    {% endfor %}
+{% endblock %}
+

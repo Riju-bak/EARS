@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="article-entry">
+        <h2> Job#{{ job.pk }} - {{ job.title }}</h2>
+        <p>posted on {{ job.date }}</p>
+        <p>{{ job.description }}</p>
+        {% if user.type == 'faculty' %}
+            <div class="card-footer text-muted">
+                <a href={% url 'jobedit' job.pk %}>Edit</a> | <a
+                    href={% url 'jobdelete' job.pk %}>Delete</a>
+            </div>
+        {% endif %}
+        <br>
+        <p>Back to <a href={% url 'joblist' %}>all jobs</a></p>
+    </div>
+{% endblock %}

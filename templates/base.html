@@ -23,8 +23,14 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center
             mb-md-0">
                     {% if user.is_authenticated %}
+                        <li><a href="{%  url 'joblist' %}" class="nav-link px-2 icon-link-hover">View jobs</a></li>
                         {% if  user.type == 'applicant'%}
-                        <li><a href="{% url 'jobapplication_create' %}" class="nav-link px-2 icon-link-hover">+ New</a></li>
+                            <li><a href="{% url 'jobapplication_list' %}" class="nav-link px-2 icon-link-hover">Your applications</a></li>
+                            <li><a href="{% url 'jobapplication_create' %}" class="nav-link px-2 icon-link-hover">+ New application</a></li>
+                        {% endif %}
+                        {% if  user.type == 'faculty'%}
+                        <li><a href="{% url 'jobapplication_list' %}" class="nav-link px-2 icon-link-hover">View all applications</a></li>
+                        <li><a href="{% url 'jobcreate' %}" class="nav-link px-2 icon-link-hover">+ New job-post</a></li>
                         {% endif %}
                         </ul>
                         <div class="dropdown text-end">

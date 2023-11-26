@@ -7,7 +7,6 @@ from jobapplications.models import JobApplication
 class JobApplicationUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = JobApplication
     fields = (
-        "title",
         "body",
     )
     template_name = "jobapplication_edit.html"

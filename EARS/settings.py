@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'accounts.apps.AccountsConfig',
+    'jobs.apps.JobsConfig',
     'jobapplications.apps.JobapplicationsConfig',
 ]
 
