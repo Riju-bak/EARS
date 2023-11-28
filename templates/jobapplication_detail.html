@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div class="article-entry">
-        <h2>{{ jobapplication.title }}</h2>
+        <h2>Application for {{ jobapplication.job.title }}</h2>
         <p>by {{ jobapplication.author }} | {{ jobapplication.date }}</p>
         <p>{{ jobapplication.body }}</p>
         {% if user.type == 'applicant' %}

@@ -9,11 +9,6 @@ from ..forms import CustomUserEditForm
 from ..models import CustomUser
 
 
-# class EditUserProfileView(UpdateView):
-#     form_class = CustomUserEditForm
-#     template_name = "registration/profile.html"
-#     success_url = reverse_lazy("home")
-
 class UserProfileView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     model = CustomUser
     form_class = CustomUserEditForm

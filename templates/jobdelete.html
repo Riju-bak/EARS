@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block title %}
-    EARS-delete application
+    EARS-delete job
 {% endblock %}
 
 {% block content %}
     <h1>Delete</h1>
     <form action="" method="post"> {% csrf_token %}
-        <p>Are you sure you want to delete Application#{{jobapplication.pk}} for "Job#{{ jobapplication.job.pk }} - {{ jobapplication.job.title }}"?</p>
+        <p>Are you sure you want to delete Job#{{ job.pk }} "{{ job.title }}"?</p>
         <button class="btn btn-danger ml-2" type="submit">Confirm</button>
     </form>
     <br>
-    <p>Back to <a href={% url 'jobapplication_list' %}>Job Applications</a></p>
+    <p>Back to <a href={% url 'joblist' %}>all jobs</a></p>
 {% endblock content %}

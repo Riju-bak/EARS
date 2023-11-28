@@ -9,6 +9,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    {#    For the footer#}
+    <link rel="stylesheet" href="./footer.css">
+
     <title>{% block  title %}
         EARS
     {% endblock title %}</title>
@@ -19,12 +23,23 @@
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center
           justify-content-lg-start">
-                <a class="navbar-brand link-secondary fw-bold" href="{% url 'home' %}">Employment Application Review System &middot;&middot;|&middot;&middot; </a>
+                <a class="navbar-brand link-secondary fw-bold" href="{% url 'home' %}">Employment Application Review
+                    System &middot;&middot;|&middot;&middot; </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center
             mb-md-0">
                     {% if user.is_authenticated %}
-                        {% if  user.type == 'applicant'%}
-                        <li><a href="{% url 'jobapplication_create' %}" class="nav-link px-2 icon-link-hover">+ New</a></li>
+                        <li><a href="{% url 'joblist' %}" class="nav-link px-2 icon-link-hover">View jobs</a></li>
+                        {% if  user.type == 'applicant' %}
+                            <li><a href="{% url 'jobapplication_list' %}" class="nav-link px-2 icon-link-hover">Your
+                                applications</a></li>
+                            <li><a href="{% url 'jobapplication_create' %}" class="nav-link px-2 icon-link-hover">+ New
+                                application</a></li>
+                        {% endif %}
+                        {% if  user.type == 'faculty' %}
+                            <li><a href="{% url 'jobapplication_list' %}" class="nav-link px-2 icon-link-hover">View all
+                                applications</a></li>
+                            <li><a href="{% url 'jobcreate' %}" class="nav-link px-2 icon-link-hover">+ New job-post</a>
+                            </li>
                         {% endif %}
                         </ul>
                         <div class="dropdown text-end">
@@ -57,6 +72,18 @@
     </main>
 </div>
 
+{% for i in "x"|rjust:"8" %}
+    <br>
+{% endfor %}
+
+<footer class="bg-body-tertiary text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2023 Developed by:
+    <a class="text-body" target="_blank" href="https://github.com/Riju-bak/">Riju-bak</a>
+  </div>
+  <!-- Copyright -->
+</footer>
 
 <!-- Bootstrap JavaScript Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

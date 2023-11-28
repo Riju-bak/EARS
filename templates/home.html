@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Home
+    EARS-Home
 {% endblock title %}
 
 {% block content %}
     {% if user.is_authenticated %}
         <p>Hi {{ user.username }}, you're a {{ user.type }}</p>
         <p>You can </p>
+        <p><a href="{% url 'joblist' %}">View jobs</a></p>
         {% if user.type == 'faculty' %}
             <p><a href="{% url 'jobapplication_list' %}">View all applications</a></p>
+            <p><a href="{% url 'jobcreate' %}">Create a new Job Post</a></p>
         {% endif %}
         {% if user.type == 'applicant' %}
             <p><a href="{% url 'jobapplication_list' %}?author={{ user.pk }}">View your applications</a></p>

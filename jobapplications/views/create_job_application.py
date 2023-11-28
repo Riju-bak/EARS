@@ -9,7 +9,7 @@ class JobApplicationCreateView(LoginRequiredMixin, CreateView):
     model = JobApplication
     template_name = "jobapplication_create.html"
     fields = (
-        "title",
+        "job",
         "body",
     )
 
@@ -22,4 +22,4 @@ class JobApplicationCreateView(LoginRequiredMixin, CreateView):
             return super().dispatch(request, *args, **kwargs)
         else:
             # Redirect to a page indicating permission denied or handle it accordingly
-            return HttpResponseForbidden("403 Forbidden: Only applicants may open a job application")
+            return HttpResponseForbidden("403 Forbidden: Only applicants may create a job application")
