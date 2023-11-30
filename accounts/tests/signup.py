@@ -24,8 +24,8 @@ class SignupTests(TestCase):
                                    "first_name": "Some",
                                    "last_name": "User",
                                    "type": custom_user_model.Type.APPLICANT,
-                                   "password1": "somepassword123",
-                                   "password2": "somepassword123",
+                                   "password1": "randompasswd",
+                                   "password2": "randompasswd",
                                })
         self.assertEqual(res.status_code, 302)
         self.assertEqual(custom_user_model.objects.all().count(), 1)
