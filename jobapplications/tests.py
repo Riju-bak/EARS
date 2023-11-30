@@ -67,3 +67,5 @@ class JobApplicationsTest(TestCase):
                                })
         self.assertEqual(res.status_code, 302)
         self.assertEqual(Comment.objects.filter(jobapplication=self.dummyJobApplicationOne).count(), 1)
+        comment = self.dummyJobApplicationOne.comment_set.all()[0]
+        self.assertEqual(comment.comment, "this is a test comment")
